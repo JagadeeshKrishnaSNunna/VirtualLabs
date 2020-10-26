@@ -1,0 +1,188 @@
+#head {
+    font-size: 35px;
+    margin-left: -100px;
+    padding-top: 10px;
+  }
+  
+  .ui.card {
+    padding:5px;
+    margin-left:auto;
+    margin-right:auto;
+  }
+  
+  .ui.container {
+    background-color:whitesmoke;
+    margin-top:30px;
+  }
+
+  .headerr {
+    font-size:35px; 
+    margin-left:10px;
+    line-height: 120%;
+  }
+  
+   #Menus {
+    padding: 5px;
+    font-size:20px;
+  }
+  
+  #DsceLogo {
+    width:100px;
+    margin-left:auto;
+    margin-right:auto;
+  }
+  
+  #CardGrid {
+    padding: 15px;
+    margin-left:auto;
+    margin-right:auto;  
+  }
+  
+  #Card1,#Card2,#Card3,#Card4,#Card5,#Card6,#Card7,#Card8 {
+    background-color:lightgray;
+    text-align:center;
+    max-width:1000px;
+    font-size:20px;
+  }
+  
+  .CardBody {
+    font-size:17px;
+    overflow-wrap: break-word;
+  }
+
+  .ui.dropdown {
+    font-size: 15px;
+    margin-left: 30px;
+    margin-top: 20px;
+  }
+
+  .ui.button {
+    display:block;
+    float: right;
+    font-size:18px;
+    padding-top:8px;
+    padding-bottom:8px;
+  }
+
+  .ui.icon.dropdown.button {
+    margin: 10px;
+    border-radius: 5px;
+    color:white;
+    background-color: rgba(20,20,20,0.6);
+    text-align: left;
+    float: left;
+    display: block;
+  }
+
+  
+  #cont {
+    padding: 20px;
+    background-color: whitesmoke;
+  }
+  
+  #int,#lis,#pre,#faqs {
+    font-size:18px;
+  }
+  #footer {
+    border-radius: 0px;
+  }
+  
+  .GrayBlock {
+      display: block;
+      padding: 9.5px;
+      margin: 0 0 10px;
+      font-size: 15px;
+      line-height: 1.42857143;
+      color: #333;
+      background-color: #f5f5f5;
+      border: 1px solid #ccc;
+      border-radius: 4px;
+      white-space:pre-wrap;
+      word-break: break-all;
+      hyphens: auto;
+  }
+  
+  #toTop {
+      margin: 10px;
+      font-size: 30px;
+      position: fixed;
+      bottom: 5px;
+      right: 15px;
+      z-index: 1000;
+      display: none;
+  }
+
+  #theoryImage {
+    width: 100%;
+  }
+
+  /* Compiler id's and classes */
+
+  #compilerHead {
+    font-size: 30px;
+    text-align-last: center;
+    display: block;
+  }
+
+  .writeCode {
+    font-size: 18px;
+    margin-left: 20px;
+  }
+
+  #compilerData {
+    font-size: 15px;
+  }
+
+  .codeBlock {
+    margin: 10px;
+    margin-left: auto;
+    margin-left: 25px;
+    margin-right: auto;
+    display: inline-block;
+  }
+
+  #editor { 
+      position: absolute;
+      top: 0;
+      right: 10px;
+      bottom: 0;
+      left: 0;
+      font-size: 14px;
+  }
+  
+  @media screen and (max-width:500px){
+    #head {
+      font-size:30px;
+      margin-left:15px;
+    }
+    
+    .ui.grid {
+      display:inline-block;   
+    }
+    
+    .ui.card {
+      width:auto;
+      margin-left:auto;
+      margin-right:auto;    
+    }
+    #Menus {
+    border: 1px; 
+    border-color: gray;
+    border-style: solid;
+    padding: 5px;
+    border-radius: 10px;
+    font-size:20px;
+    }
+
+    .ui.left.floated.button {
+      font-size:20px;
+      display: block;
+      margin: 8px;
+    }
+
+    #outputBox {
+      margin-top: 25px;
+    }
+  }
+  
+  
