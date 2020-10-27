@@ -1,0 +1,40 @@
+.body{
+width:500px;
+height: 580px;
+background-color: rgb(53, 50, 50);
+text-align: center;
+margin: auto;
+margin-top:50px;
+border-radius: 30px;
+}
+.formelements{
+border-radius: 20px;
+margin: 10px;
+height: 30px;
+margin-top: 30px;
+margin-left: 20px;
+width: 250px;
+}
+.formLabel{
+    color: white;
+    font-size: 25px;
+    margin-left:10px;
+}
+.submit{
+   background-color: rgb(63, 63, 73); 
+   width: 100px;
+   height: 40px;
+   border-radius: 10px;
+   margin-top: 30px;
+   color: aqua;
+   font-size: 20px;
+}
+.err{
+    border-radius: 20px;
+    margin: 10px;
+    height: 30px;
+    margin-top: 30px;
+    margin-left: 20px;
+    width: 250px;
+    border: 1px solid red;
+}
