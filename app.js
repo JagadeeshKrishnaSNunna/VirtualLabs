@@ -15,8 +15,12 @@ app.get("/",(req,res)=>{
     res.sendFile(path.join(__dirname,'views','home.html'));
   
 });
-app.get("/titles",(req,res)=>{
-    res.sendFile(path.join(__dirname,'views','titles.html'));
+app.get("/StudentAuthentication",(req,res)=>{
+    res.sendFile(path.join(__dirname,'views','StudentAuthentication.html'));
+  
+});
+ app.get("/titles",(req,res)=>{
+     res.sendFile(path.join(__dirname,'views','titles.html'));
   
 });
 app.get("/datastructures",(req,res)=>{

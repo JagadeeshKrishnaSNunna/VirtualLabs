@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Authentication</title>
+</head>
+<body>
+    <div>
+        <form onsubmit="return FormSubmit()" action='/titles'>
+            <label>USN</label>
+            <input id='usn' type="text">
+            <label>password</label>
+            <input type="password" id='password'>
+            <button type='submit'>Submit</button>
+        </form>
+    </div>
+</body>
+<script type="text/javascript">
+    function FormSubmit(){
+        var usn=document.getElementById('usn').value;
+        var exp=/^1ds17cs[0-9]{3}$/;
+        if(exp.test(usn)){
+            alert("valid");
+            return true;
+        }else{alert("invalid");return false;}
+    }
+</script>
+</html>
