@@ -19,6 +19,10 @@ app.get("/StudentAuthentication",(req,res)=>{
     res.sendFile(path.join(__dirname,'views','StudentAuthentication.html'));
   
 });
+app.get("/StudentRegister",(req,res)=>{
+    res.sendFile(path.join(__dirname,'views','StudentRegister.html'));
+  
+});
  app.get("/titles",(req,res)=>{
      res.sendFile(path.join(__dirname,'views','titles.html'));
   
@@ -48,5 +52,5 @@ c.com(sourcecode,test,language);
 
 app.listen(3000,err =>{
     if(err)console.log("OOPS!!server failed")
-    else console.log("server started");
+    else console.log("server started at port : 3000");
     }); 
