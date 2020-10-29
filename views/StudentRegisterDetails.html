@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Student-Register</title>
+    <link rel="stylesheet" href="/CSS/StudentAuthentication.css">
+    <script src='/js/StudentRegister.js'></script>
+    <script>
+        function setUsn(){
+            document.getElementById('usnUp').innerHTML='USN : '+sessionStorage.getItem('usn').toUpperCase();
+            document.getElementById('usn').value=sessionStorage.getItem('usn').toUpperCase();
+            sessionStorage.removeItem('usn');
+        }
+    </script>
+</head>
+<body onload="setUsn()">
+    <div class="body">
+        <form onsubmit="return RegisterDetails()" method="POST" action="/StudentAuthentication/StudentRegisterDetails">
+            <div>
+                <input style="visibility: hidden;" id='usn' name="usn" type="text"><br>
+                <img src="/images/login.png" style="width: 40%;margin-top: 10px;">
+                <p id='usnUp' class="formLabel">USN:{}</p>
+                <label class="formLabel">name</label>
+                <input id='Studentname' name="Studentname" type="text" class="formelements" placeholder="   Name"><br>
+                <label class="formLabel" style="margin-left: -30px;">password</label>
+                <input id='pass' name="pass" type="password" class="formelements" placeholder="   password"><br>
+                <input style="margin-left: 90px;" id='conpass' type="password" class="formelements" placeholder="   ReEnter password">
+                <br><button type="submit"  class="submit">Submit</button>
+                
+            </div>
+        </form>
+        <p id='Invalid' style="color: red;"></p>
+    </div>
+</body>
+</html>

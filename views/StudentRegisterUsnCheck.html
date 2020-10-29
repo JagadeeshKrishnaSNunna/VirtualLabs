@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Student-Register</title>
+    <link rel="stylesheet" href="/CSS/StudentAuthentication.css">
+    <script src='/js/StudentRegister.js'></script>
+    
+</head>
+
+<body>
+    <div class="body">
+        <img src="/images/login.png" style="width: 40%;margin-top: 20px;">
+        <div>
+            <form onsubmit="return CheckUsn(usn)" method="post" action="/StudentAuthentication/StudentRegisterUsn" >
+                    <div id='usnDetail' style="visibility:visible;">
+                    <label class="formLabel" >USN</label>
+                    <input id='usn' name="usn" type="text" class="formelements" placeholder="   USN"><br>
+                    <button type="submit" class="submit">Submit</button>
+                </div>
+                                
+            </form>
+        </div>
+    </div>
+</body>
+
+</html>
