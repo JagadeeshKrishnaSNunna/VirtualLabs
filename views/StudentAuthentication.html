@@ -5,53 +5,27 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="/CSS/StudentAuthentication.css">
     <title>Authentication</title>
+    <script src="/js/StudentLogin.js"></script>
 </head>
 <body>
     <div class="body">
         <img src="/images/login.png" style="width: 40%;margin-top: 20px;">
-        <form onsubmit="return FormSubmit()" action='/titles'>
+        <form onsubmit="return FormSubmit()"  method="post" action='/StudentAuthentication/Authentication'>
             <div>
                 <label class="formLabel">USN</label>
-            <input id='usn' type="text" class="formelements" placeholder="   USN">
+            <input id='usn' name="usn" type="text" class="formelements" placeholder="   USN">
             </div>
             <div>
                 <label class="formLabel" style="margin-left: -30px;">password</label>
                 <span style="margin-left: -0px;">
-                    <input  type="password" id='password' class="formelements" placeholder="   Password" >
+                    <input name="password" type="password" id='password' class="formelements" placeholder="   Password" >
                 </span>
             </div>
             <button class="submit" type='submit'>Submit</button><br>
-            <span style="margin-top: 30px;"><a href="/StudentRegisterUsn" style="color:white;">Register hear..!</a></span>
+            <span style="margin-top: 30px;"><a href="/StudentAuthentication/StudentRegisterUsn" style="color:white;">Register hear..!</a></span>
         </form>
         <p id='Invalid' style="color: red;visibility:hidden"></p>
     </div>
 </body>
-<script type="text/javascript">
-    function FormSubmit(){
-        var usn=document.getElementById('usn');
-        var err=document.getElementById('Invalid');
-        var pass=document.getElementById('password');
-        var exp=/^1ds17cs[0-9]{3}$/i;
-        if(usn.value==""){
-            err.innerHTML="USN cannot be Empty..!";
-            err.style.visibility='visible';
-            usn.style.borderColor='red';
-            return false;
-        }
-        if(pass.value==''){
-            err.innerHTML="Password cannot be Empty..!";
-            err.style.visibility='visible';
-            pass.style.borderColor='red';
-            return false;
-        }
-        if(exp.test(usn.value)&&pass.value=='121'){
-            return true;
-        }else{
-            err.innerHTML="Check USN and Password..!";
-            pass.style.borderColor='red';
-            err.style.visibility='visible';
-            usn.style.borderColor='red';
-            return false;}
-    }
-</script>
+
 </html>

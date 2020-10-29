@@ -1,6 +1,13 @@
 const express = require("express");
 const app = express();
+//const mongoose = require('mongoose');
+//const url = 'mongodb://localhost/Studentdbex'
+//mongoose.connect(url, { useNewUrlParser: true });
+//const con = mongoose.connection
+//con.on('open', function () { console.log("connection established") })
+//const students = require('./public/model/StudentDB')
 // const {c, cpp, node, python, java} = require('compile-run');
+const studentRouter=require('./Routes/StudentAuth')  
 const path = require('path');
 const compile = require('./public/js/compile.js');
 const bodyParser = require('body-parser');
@@ -16,15 +23,10 @@ app.get("/", (req, res) => {
 
 });
 // Register Shit
-app.get("/StudentAuthentication", (req, res) => {
-    res.sendFile(path.join(__dirname, 'views', 'StudentAuthentication.html'));
-});
-app.get("/StudentRegisterUsn", (req, res) => {
-    res.sendFile(path.join(__dirname, 'views', 'StudentRegisterUsnCheck.html'));
-});
-app.get("/StudentRegisterDetails", (req, res) => {
-    res.sendFile(path.join(__dirname, 'views', 'StudentRegisterDetails.html'));
-});
+
+app.use('/StudentAuthentication',studentRouter)
+
+
 
 
 app.get("/titles", (req, res) => {
