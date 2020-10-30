@@ -1,11 +1,6 @@
 const express = require("express");
 const app = express();
-//const mongoose = require('mongoose');
-//const url = 'mongodb://localhost/Studentdbex'
-//mongoose.connect(url, { useNewUrlParser: true });
-//const con = mongoose.connection
-//con.on('open', function () { console.log("connection established") })
-//const students = require('./public/model/StudentDB')
+const session=require('express-session')
 // const {c, cpp, node, python, java} = require('compile-run');
 const studentRouter=require('./Routes/StudentAuth')  
 const path = require('path');
@@ -23,14 +18,30 @@ app.get("/", (req, res) => {
 
 });
 // Register Shit
+app.use(session({
+    secret:'secretekey',
+    resave:false,
+    saveUninitialized:false,
+    name:"StudentUSN",
+    cookie:{
+        maxAge:1000*60*60,
+        sameSite:true,
+    }
+}))
 
 app.use('/StudentAuthentication',studentRouter)
 
+const checkUser=(req,res,next)=>{
+  if(req.session.usn==undefined){
+    res.redirect('/StudentAuthentication/Authentication')
+  }else{next()}
+}
 
 
 
-app.get("/titles", (req, res) => {
+app.get("/titles", checkUser, (req, res) => {
     res.sendFile(path.join(__dirname, 'views', 'titles.html'));
+    
 });
 app.get("/datastructures", (req, res) => {
     res.sendFile(path.join(__dirname, 'views', 'datastructures.html'));
