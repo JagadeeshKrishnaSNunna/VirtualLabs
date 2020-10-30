@@ -31,8 +31,12 @@ app.get("/compile",(req,res)=>{
     res.sendFile(path.join(__dirname,'views','compile.html'));
 });
 app.get("/cn",(req,res)=>{
-    res.sendFile(path.join(__dirname,'views','cn.html') )
+    res.sendFile(path.join(__dirname,'views','cn.html'));
 });
+app.get("/osi",(req,res)=>{
+    res.sendFile(path.join(__dirname,'views','osi.html'));
+});
+
 app.post("/compile",(req,res)=>{
     
 const sourcecode=req.body.code;// stores the source code
