@@ -43,6 +43,12 @@ app.get("/stack", (req, res) => {
 app.get("/compile", (req, res) => {
     res.sendFile(path.join(__dirname, 'views', 'compile.html'));
 });
+app.get("/cn",(req,res)=>{
+    res.sendFile(path.join(__dirname,'views','cn.html'));
+});
+app.get("/osi",(req,res)=>{
+    res.sendFile(path.join(__dirname,'views','osi.html'));
+});
 
 app.post("/compile", (req, res) => {
 
