@@ -1,6 +1,11 @@
 const express = require("express");
 const app = express();
-const session=require('express-session')
+//const mongoose = require('mongoose');
+//const url = 'mongodb://localhost/Studentdbex'
+//mongoose.connect(url, { useNewUrlParser: true });
+//const con = mongoose.connection
+//con.on('open', function () { console.log("connection established") })
+//const students = require('./public/model/StudentDB')
 // const {c, cpp, node, python, java} = require('compile-run');
 const studentRouter=require('./Routes/StudentAuth')  
 const path = require('path');
@@ -18,30 +23,14 @@ app.get("/", (req, res) => {
 
 });
 // Register Shit
-app.use(session({
-    secret:'secretekey',
-    resave:false,
-    saveUninitialized:false,
-    name:"StudentUSN",
-    cookie:{
-        maxAge:1000*60*60,
-        sameSite:true,
-    }
-}))
-
+ // middleware for the authentication
 app.use('/StudentAuthentication',studentRouter)
 
-const checkUser=(req,res,next)=>{
-  if(req.session.usn==undefined){
-    res.redirect('/StudentAuthentication/Authentication')
-  }else{next()}
-}
 
 
 
-app.get("/titles", checkUser, (req, res) => {
+app.get("/titles", (req, res) => {
     res.sendFile(path.join(__dirname, 'views', 'titles.html'));
-    
 });
 app.get("/datastructures", (req, res) => {
     res.sendFile(path.join(__dirname, 'views', 'datastructures.html'));
@@ -54,6 +43,12 @@ app.get("/stack", (req, res) => {
 app.get("/compile", (req, res) => {
     res.sendFile(path.join(__dirname, 'views', 'compile.html'));
 });
+app.get("/cn",(req,res)=>{
+    res.sendFile(path.join(__dirname,'views','cn.html'));
+});
+app.get("/osi",(req,res)=>{
+    res.sendFile(path.join(__dirname,'views','osi.html'));
+});
 
 app.post("/compile", (req, res) => {
 
@@ -64,7 +59,34 @@ app.post("/compile", (req, res) => {
     c.com(sourcecode, test, language);
     res.redirect("/compile");
 
-})
+});
+app.get("/placement", (req, res) => {
+    res.sendFile(path.join(__dirname, 'views', 'placement.html'));
+});
+app.get("/problem1", (req, res) => {
+    res.sendFile(path.join(__dirname, 'views', 'problem1.html'));
+});
+app.get("/problem2", (req, res) => {
+    res.sendFile(path.join(__dirname, 'views', 'problem2.html'));
+});
+app.get("/problem3", (req, res) => {
+    res.sendFile(path.join(__dirname, 'views', 'problem3.html'));
+});
+app.get("/ExceptionalHand", (req, res) => {
+    res.sendFile(path.join(__dirname, 'views', 'ExceptionalHand.html'));
+});
+app.get("/cn", (req, res) => {
+    res.sendFile(path.join(__dirname, 'views', 'cn.html'));
+});
+app.get("/networkutilities", (req, res) => {
+    res.sendFile(path.join(__dirname, 'views', 'networkutilities.html'));
+});
+
+
+
+
+
+
 
 app.listen(3000, err => {
     if (err) console.log("OOPS!!server failed")
