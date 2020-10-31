@@ -92,7 +92,9 @@ app.get("/cn",checkUser, (req, res) => {
 app.get("/networkutilities",checkUser,(req, res) => {
     res.sendFile(path.join(__dirname, 'views', 'networkutilities.html'));
 });
-
+app.get("/logout",(req,res)=>{
+    
+})
 
 
 

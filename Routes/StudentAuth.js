@@ -111,7 +111,7 @@ router.post("/StudentRegisterDetails", redirect, urlencodedParser, async (req, r
 router.get('/Logout', checkUser, urlencodedParser, (req, res) => {
     req.session.destroy(err => {
         if (err) {
-            return res.redirect('/titles')
+            return res.redirect("/titles");
         }
         res.clearCookie("StudentUSN");
         console.log("logged out successful..!");
