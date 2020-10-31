@@ -54,10 +54,10 @@ app.get("/stack", checkUser,(req, res) => {
 app.get("/compile",checkUser, (req, res) => {
     res.sendFile(path.join(__dirname, 'views', 'compile.html'));
 });
-app.get("/cn",(req,res)=>{
+app.get("/cn",checkUser,(req,res)=>{
     res.sendFile(path.join(__dirname,'views','cn.html'));
 });
-app.get("/osi",(req,res)=>{
+app.get("/osi",checkUser,(req,res)=>{
     res.sendFile(path.join(__dirname,'views','osi.html'));
 });
 
@@ -71,25 +71,25 @@ app.post("/compile",checkUser, (req, res) => {
     res.redirect("/compile");
 
 });
-app.get("/placement", (req, res) => {
+app.get("/placement",checkUser, (req, res) => {
     res.sendFile(path.join(__dirname, 'views', 'placement.html'));
 });
-app.get("/problem1", (req, res) => {
+app.get("/problem1",checkUser,(req, res) => {
     res.sendFile(path.join(__dirname, 'views', 'problem1.html'));
 });
-app.get("/problem2", (req, res) => {
+app.get("/problem2",checkUser, (req, res) => {
     res.sendFile(path.join(__dirname, 'views', 'problem2.html'));
 });
-app.get("/problem3", (req, res) => {
+app.get("/problem3",checkUser, (req, res) => {
     res.sendFile(path.join(__dirname, 'views', 'problem3.html'));
 });
-app.get("/ExceptionalHand", (req, res) => {
+app.get("/ExceptionalHand",checkUser, (req, res) => {
     res.sendFile(path.join(__dirname, 'views', 'ExceptionalHand.html'));
 });
-app.get("/cn", (req, res) => {
+app.get("/cn",checkUser, (req, res) => {
     res.sendFile(path.join(__dirname, 'views', 'cn.html'));
 });
-app.get("/networkutilities", (req, res) => {
+app.get("/networkutilities",checkUser,(req, res) => {
     res.sendFile(path.join(__dirname, 'views', 'networkutilities.html'));
 });
 
