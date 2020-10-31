@@ -1,5 +1,6 @@
 const express = require("express");
 const app = express();
+<<<<<<< Updated upstream
 //const mongoose = require('mongoose');
 //const url = 'mongodb://localhost/Studentdbex'
 //mongoose.connect(url, { useNewUrlParser: true });
@@ -8,6 +9,9 @@ const app = express();
 //const students = require('./public/model/StudentDB')
 // const {c, cpp, node, python, java} = require('compile-run');
 const studentRouter=require('./Routes/StudentAuth')  
+=======
+// const {c, cpp, node, python, java} = require('compile-run'); 
+>>>>>>> Stashed changes
 const path = require('path');
 const compile = require('./public/js/compile.js');
 const bodyParser = require('body-parser');
