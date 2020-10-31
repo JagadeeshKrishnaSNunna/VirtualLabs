@@ -35,11 +35,11 @@ app.get("/datastructures", (req, res) => {
     res.sendFile(path.join(__dirname, 'views', 'datastructures.html'));
 
 });
-app.get("/stack", (req, res) => {
+app.get("/stack", checkUser,(req, res) => {
     res.sendFile(path.join(__dirname, 'views', 'stack.html'));
 
 });
-app.get("/compile", (req, res) => {
+app.get("/compile",checkUser, (req, res) => {
     res.sendFile(path.join(__dirname, 'views', 'compile.html'));
 });
 app.get("/cn",(req,res)=>{
@@ -49,7 +49,7 @@ app.get("/osi",(req,res)=>{
     res.sendFile(path.join(__dirname,'views','osi.html'));
 });
 
-app.post("/compile", (req, res) => {
+app.post("/compile",checkUser, (req, res) => {
 
     const sourcecode = req.body.code;// stores the source code
     const test = req.body.test;  //stores the input 
