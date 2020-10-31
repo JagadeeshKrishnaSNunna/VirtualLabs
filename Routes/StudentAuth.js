@@ -39,6 +39,7 @@ router.get("/Authentication", redirect, (req, res) => {
 });
 router.post("/Authentication", redirect, urlencodedParser, async (req, res) => {
     var id = req.body.usn
+    // document.getElementById("user").innerHTML=id;
     const student = await students.findById(id)
     if (student == null) {
         res.sendFile(path.join(__dirname, '..', 'views', 'StudentRegisterUsnCheck.html'));
@@ -47,7 +48,8 @@ router.post("/Authentication", redirect, urlencodedParser, async (req, res) => {
             if (bcrypt.compare(req.body.password,student.password)) {
                 console.log("logIn Successful..!");
                 req.session.usn = id;
-                res.sendFile(path.join(__dirname, '..', 'views', 'titles.html'));
+                // res.sendFile(path.join(__dirname, '..', 'views', 'titles.html'));
+                res.redirect("/titles");
             }
             else {
                 res.sendFile(path.join(__dirname, '..', 'views', 'StudentAuthentication.html'));
