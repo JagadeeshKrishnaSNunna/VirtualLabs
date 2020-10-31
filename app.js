@@ -1,11 +1,6 @@
 const express = require("express");
 const app = express();
-//const mongoose = require('mongoose');
-//const url = 'mongodb://localhost/Studentdbex'
-//mongoose.connect(url, { useNewUrlParser: true });
-//const con = mongoose.connection
-//con.on('open', function () { console.log("connection established") })
-//const students = require('./public/model/StudentDB')
+const session=require('express-session')
 // const {c, cpp, node, python, java} = require('compile-run');
 const studentRouter=require('./Routes/StudentAuth')  
 const path = require('path');
@@ -23,34 +18,50 @@ app.get("/", (req, res) => {
 
 });
 // Register Shit
+app.use(session({
+    secret:'secretekey',
+    resave:false,
+    saveUninitialized:false,
+    name:"StudentUSN",
+    cookie:{
+        maxAge:1000*60*60,
+        sameSite:true,
+    }
+}))
 
 app.use('/StudentAuthentication',studentRouter)
 
+const checkUser=(req,res,next)=>{
+  if(req.session.usn==undefined){
+    res.redirect('/StudentAuthentication/Authentication')
+  }else{next()}
+}
 
 
 
-app.get("/titles", (req, res) => {
+app.get("/titles", checkUser, (req, res) => {
     res.sendFile(path.join(__dirname, 'views', 'titles.html'));
+    
 });
-app.get("/datastructures", (req, res) => {
+app.get("/datastructures", checkUser,(req, res) => {
     res.sendFile(path.join(__dirname, 'views', 'datastructures.html'));
 
 });
-app.get("/stack", (req, res) => {
+app.get("/stack", checkUser,(req, res) => {
     res.sendFile(path.join(__dirname, 'views', 'stack.html'));
 
 });
-app.get("/compile", (req, res) => {
+app.get("/compile",checkUser, (req, res) => {
     res.sendFile(path.join(__dirname, 'views', 'compile.html'));
 });
-app.get("/cn",(req,res)=>{
+app.get("/cn",checkUser,(req,res)=>{
     res.sendFile(path.join(__dirname,'views','cn.html'));
 });
-app.get("/osi",(req,res)=>{
+app.get("/osi",checkUser,(req,res)=>{
     res.sendFile(path.join(__dirname,'views','osi.html'));
 });
 
-app.post("/compile", (req, res) => {
+app.post("/compile",checkUser, (req, res) => {
 
     const sourcecode = req.body.code;// stores the source code
     const test = req.body.test;  //stores the input 
@@ -60,25 +71,25 @@ app.post("/compile", (req, res) => {
     res.redirect("/compile");
 
 });
-app.get("/placement", (req, res) => {
+app.get("/placement",checkUser, (req, res) => {
     res.sendFile(path.join(__dirname, 'views', 'placement.html'));
 });
-app.get("/problem1", (req, res) => {
+app.get("/problem1",checkUser,(req, res) => {
     res.sendFile(path.join(__dirname, 'views', 'problem1.html'));
 });
-app.get("/problem2", (req, res) => {
+app.get("/problem2",checkUser, (req, res) => {
     res.sendFile(path.join(__dirname, 'views', 'problem2.html'));
 });
-app.get("/problem3", (req, res) => {
+app.get("/problem3",checkUser, (req, res) => {
     res.sendFile(path.join(__dirname, 'views', 'problem3.html'));
 });
-app.get("/ExceptionalHand", (req, res) => {
+app.get("/ExceptionalHand",checkUser, (req, res) => {
     res.sendFile(path.join(__dirname, 'views', 'ExceptionalHand.html'));
 });
-app.get("/cn", (req, res) => {
+app.get("/cn",checkUser, (req, res) => {
     res.sendFile(path.join(__dirname, 'views', 'cn.html'));
 });
-app.get("/networkutilities", (req, res) => {
+app.get("/networkutilities",checkUser,(req, res) => {
     res.sendFile(path.join(__dirname, 'views', 'networkutilities.html'));
 });
 
