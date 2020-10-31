@@ -43,7 +43,7 @@ app.get("/titles", checkUser, (req, res) => {
     res.sendFile(path.join(__dirname, 'views', 'titles.html'));
     
 });
-app.get("/datastructures", (req, res) => {
+app.get("/datastructures", checkUser,(req, res) => {
     res.sendFile(path.join(__dirname, 'views', 'datastructures.html'));
 
 });
