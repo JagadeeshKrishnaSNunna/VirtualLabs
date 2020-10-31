@@ -23,7 +23,6 @@ app.get("/", (req, res) => {
 
 });
 // Register Shit
- // middleware for the authentication
 app.use('/StudentAuthentication',studentRouter)
 
 
