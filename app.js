@@ -54,6 +54,12 @@ app.get("/stack", checkUser,(req, res) => {
 app.get("/compile",checkUser, (req, res) => {
     res.sendFile(path.join(__dirname, 'views', 'compile.html'));
 });
+app.get("/cn",(req,res)=>{
+    res.sendFile(path.join(__dirname,'views','cn.html'));
+});
+app.get("/osi",(req,res)=>{
+    res.sendFile(path.join(__dirname,'views','osi.html'));
+});
 
 app.post("/compile",checkUser, (req, res) => {
 
@@ -64,7 +70,34 @@ app.post("/compile",checkUser, (req, res) => {
     c.com(sourcecode, test, language);
     res.redirect("/compile");
 
-})
+});
+app.get("/placement", (req, res) => {
+    res.sendFile(path.join(__dirname, 'views', 'placement.html'));
+});
+app.get("/problem1", (req, res) => {
+    res.sendFile(path.join(__dirname, 'views', 'problem1.html'));
+});
+app.get("/problem2", (req, res) => {
+    res.sendFile(path.join(__dirname, 'views', 'problem2.html'));
+});
+app.get("/problem3", (req, res) => {
+    res.sendFile(path.join(__dirname, 'views', 'problem3.html'));
+});
+app.get("/ExceptionalHand", (req, res) => {
+    res.sendFile(path.join(__dirname, 'views', 'ExceptionalHand.html'));
+});
+app.get("/cn", (req, res) => {
+    res.sendFile(path.join(__dirname, 'views', 'cn.html'));
+});
+app.get("/networkutilities", (req, res) => {
+    res.sendFile(path.join(__dirname, 'views', 'networkutilities.html'));
+});
+
+
+
+
+
+
 
 app.listen(3000, err => {
     if (err) console.log("OOPS!!server failed")

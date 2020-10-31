@@ -9,41 +9,91 @@
 
     <h1>Coding Platform</h1>
 
-    <!-- <div class="container">
-        <form name="myform" action="/code" method="POST" >
-          
-           <h1>code</h1>
-           <div class="row">
-            <div class="col-25">
-              <label for="fname">languages</label>
+            <div class="ui form">
+              <div id="compilerData">
+              Write a program in C to simulate the working of a stack of integers using an array. Provide the following operations:<br>
+               a. Insert<br> b. Delete<br> c. Display.<br><br>
+               <strong>Input Format:</strong><br>
+               Every line consists of one argument, a character. If the character is 'a', the next argument is an integer.<br>
+               The Character denotes the operation. 'a' is to Insert, 'b' is to Delete, and 'c' is to Display.<br>
+               The Integer denotes the value to Insert into the stack.<br>
+               Note: The program ends only when a character which is not any of the above options is entered.<br><br>
+               <strong>Output Format:</strong><br>
+               Print one/more array of integers, denoting the composition of the stack.<br> 
+              </div><br>
+      
+              <div class="ui segment">
+               <div class="ui two column very relaxed grid">
+                    <div class="column">
+                      <strong>Sample Input</strong><br>
+                      a 5<br>a 8<br>c<br>b<br>a 7<br>c<br>q
+                    </div>
+                    <div class="column">
+                      <strong>Sample Output</strong><br>
+                      8 5 <br>7 5 <br>
+                    </div>
+               </div>
+               <div class="ui vertical divider">and</div>
+               </div>
+              <br>
+      
+              
+      
+                <form name="myform" action="/compile" method="POST" >
+                
+                  <h1>code</h1>
+                  <div class="row">
+                   <div class="col-25">
+                     <label for="fname">languages</label>
+                   </div>
+                   <select   name ="langs" id="lang">
+                       <option value="cpp">C</option>
+                       <option value="c++">C++</option>
+                       <option value="java">Java </option>
+                       <option value="python">Python </option>
+                   </select>
+                  
+                 </div>
+                  <br>
+                  <textarea name="code" id="" cols="100" rows="20"></textarea>
+               <br>
+               <div class="customTest">
+                   <textarea name="test" id="" cols="30" rows="10"></textarea>
+               </div>
+               <br>
+               <div class="submit">
+                   <button class="btn" >Submit</button>
+               </div>
+            </form>
+                </div>
+      
             </div>
-            <select   name ="langs" id="lang">
-                <option value="cpp">C</option>
-                <option value="c++">C++</option>
-                <option value="java">Java </option>
-                <option value="python">Python </option>
-            </select>
-           
+            
+            <div id="faqs" style="display: none;">
+            
+              </div>
+            </div>
+            </div>
+            
           </div>
-           <br>
-           <textarea name="code" id="" cols="100" rows="20"> #include<stdio.h>
-
-            int main(){
-            
-            int main=10;
-            
-            printf("hello world %d",main);
-            return 0;
-            }</textarea>
-        <br>
-        <div class="customTest">
-            <textarea name="test" id="" cols="30" rows="10"></textarea>
         </div>
-        <br>
-        <div class="submit">
-            <button class="btn" >Submit</button>
+      </div>
         </div>
-        </form> -->
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/ace/1.3.3/ace.js" type="text/javascript" charset="utf-8"></script>
+      <script>
+          var editor = ace.edit("editor");
+          editor.setTheme("ace/theme/twilight");
+          editor.session.setMode("ace/mode/c_cpp");
+          var textarea = $('textarea[name="editor"]');
+      editor.getSession().on("change", function () {
+          textarea.val(editor.getSession().getValue());
+          // console.log(textarea.val(editor.getSession().getValue()));
+      });
+        //  function getcodeVal(){
+        //   var code = editor.getValue();
+        //   console.log(code);
+        //  }
+      </script>   
 </div>
 </body>
 </html>
