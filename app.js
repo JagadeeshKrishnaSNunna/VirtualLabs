@@ -67,6 +67,7 @@ app.get("/osi",checkUser,function(req,res){
     // console.log(r);
     // console.log(q);
     // res.render("osi.ejs",{q:q});
+    // res.re
 });
 
 app.post("/compile",checkUser, (req, res) => {
