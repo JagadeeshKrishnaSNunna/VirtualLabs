@@ -5,6 +5,7 @@ const session=require('express-session')
 const studentRouter=require('./Routes/StudentAuth')  
 const path = require('path');
 const quiz=require('./public/js/cnquiz');
+const {c, cpp, node, python, java} = require('compile-run');
 const compile = require('./public/js/compile.js');
 const bodyParser = require('body-parser');
 const { stderr } = require("process");
@@ -70,17 +71,18 @@ app.get("/osi",checkUser,function(req,res){
     // res.re
 });
 
-// app.post("/compile",checkUser, (req, res) => {
+app.post("/compile",checkUser, (req, res) => {
 
-//     // const sourcecode = req.body.code;// stores the source code
-//     // const test = req.body.test;  //stores the input 
-//     // var language = req.body.langs;
+    // const sourcecode = req.body.code;// stores the source code
+    const test ="";  //stores the input 
+    var language = "cpp";
+const sourcecode =req.body.code;
+// console.log(test);
+    let c = new compile()
+    c.com(sourcecode, test, language);
+    res.redirect("/compile");
 
-//     let c = new compile()
-//     c.com(sourcecode, test, language);
-//     res.redirect("/compile");
-
-// });
+});
 app.get("/placement",checkUser, (req, res) => {
     res.sendFile(path.join(__dirname, 'views', 'placement.html'));
 });

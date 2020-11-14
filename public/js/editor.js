@@ -1,6 +1,6 @@
 const executeCodeBtn = document.querySelector('.editor__run');
-// const resetCodeBtn = document.querySelector('.editor__reset');
-const express = require("express");
+
+const resetCodeBtn = document.querySelector('.editor__reset');
 // Setup Ace
 let codeEditor = ace.edit("editorCode");
 let defaultCode = `#include<stdio.h>
@@ -24,8 +24,8 @@ let editorLib = {
 
         // Set Options
         codeEditor.setOptions({
-            fontFamily: 'Inconsolata',
-            fontSize: '12pt',
+            // fontFamily: 'Inconsolata',
+            // fontSize: '12pt',
             enableBasicAutocompletion: true,
             enableLiveAutocompletion: true,
         });
@@ -35,25 +35,31 @@ let editorLib = {
     }
 }
 
+
+
+
 // Events
 executeCodeBtn.addEventListener('click', () => {
     // Get input from the code editor
-    const userCode = codeEditor.getValue();
+    const sourcecode = codeEditor.getValue();
+    console.log(sourcecode);
+    
 
-    // Run the user code
-    try {
-        // new Function(userCode)();
-   
-
-    } catch (err) {
-        console.error(err);
-    }
 });
 
-// resetCodeBtn.addEventListener('click', () => {
-//     // Clear ace editor
-//     codeEditor.setValue(defaultCode);
-// })
+
+
+
+resetCodeBtn.addEventListener('click', () => {
+    // Clear ace editor
+    // codeEditor.setValue(defaultCode);
+    const sourcecode = codeEditor.getValue();
+    document.querySelector('form').elements[0].value =sourcecode;
+    var test =document.querySelector('form').elements[0].value;
+    console.log(test);
+})
+
+
 
 editorLib.init();
 

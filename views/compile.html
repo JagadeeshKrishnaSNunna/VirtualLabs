@@ -45,19 +45,33 @@
   <!-- This below code is for editor setup part -->
   <div class="editor__wrapper">
       <div class="editor__body" style="height:500px;width: 1050px;">
-        <form action="" id="editorCode" class="editor__code" >
-            <!-- <div id="editorCode" class="editor__code"></div> -->
-            </form>
+        <div action="" id="editorCode" class="editor__code" >
+          
+        </div>
+       
       </div>
     
         <div class="editor__footer">
             <div class="editor__footer--left">
+              <form  name="myform" action="/compile" method="post">
+                <input type="hidden" id='code' name="code"  >
                 <button class="editor__btn editor__run" >Run ></button>
+              </form>
+               
                 <button class="editor__btn editor__reset">Reset ></button>
             </div>
             <div class="editor__footer--right">
+         <div class="editor__console">
+
+         </div>
                 <div class="editor__console">
-                    <ul class="editor__console-logs"></ul>
+                 
+                    <ul class="editor__console-logs">
+
+                    </ul>
+                    <ul class="editor__console-logs">
+                      
+                    </ul>
                 </div>
             </div>
         </div>
