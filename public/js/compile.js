@@ -8,7 +8,7 @@ const { stderr } = require("process");
  
 
 // console.log(editorLib);
-
+console.log(sessionStorage.getItem('u_Code'));
 
 const code_run= function (sourcecode,language){
     if(language==="cpp"){

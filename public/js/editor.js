@@ -39,7 +39,7 @@ let editorLib = {
 executeCodeBtn.addEventListener('click', () => {
     // Get input from the code editor
     const userCode = codeEditor.getValue();
-
+    sessionStorage.setItem("u_Code", userCode)
     // Run the user code
     try {
         // new Function(userCode)();
