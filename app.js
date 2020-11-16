@@ -75,7 +75,7 @@ app.post("/compile",checkUser, (req, res) => {
 
     // const sourcecode = req.body.code;// stores the source code
     const test ="";  //stores the input 
-    var language = "cpp";
+    var language = "python";
 const sourcecode =req.body.code;
 // console.log(test);
     let c = new compile()
