@@ -3,20 +3,26 @@ const app = express();
 const session=require('express-session')
 // const {c, cpp, node, python, java} = require('compile-run');
 const studentRouter=require('./Routes/StudentAuth')  
+const quiz_solution=require('./Routes/quiz_solution') 
 const path = require('path');
-const quiz=require('./public/js/cnquiz');
-const {c, cpp, node, python, java} = require('compile-run');
+// const quiz=require('./public/js/cnquiz');
+
 const compile = require('./public/js/compile.js');
+const quizquestions =require('./public/js/questions')
 const bodyParser = require('body-parser');
-const { stderr } = require("process");
+
+
 app.set("View engine", "ejs");
 
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(express.static(path.join(__dirname, 'public')));
+// app.use(express.static(path.join(__dirname, 'public/js')));
 
 
 app.get("/", (req, res) => {
+  
     res.sendFile(path.join(__dirname, 'views', 'home.html'));
+    
 
 });
 // Register Shit
@@ -31,7 +37,9 @@ app.use(session({
     }
 }))
 
-app.use('/StudentAuthentication',studentRouter)
+app.use('/StudentAuthentication',studentRouter);
+app.use('/quiz',quiz_solution);
+
 
 const checkUser=(req,res,next)=>{
   if(req.session.usn==undefined){
@@ -39,10 +47,23 @@ const checkUser=(req,res,next)=>{
   }else{next()}
 }
 
-
+ const getUsn=(req,res,next)=>{
+    if(req.session.usn==undefined){
+        next()
+    }else{
+         
+        console.log(req.session.usn);
+        
+        // getusn(req.session.usn);
+        next();
+    }
+    
+}
 
 app.get("/titles", checkUser, (req, res) => {
+    
     res.sendFile(path.join(__dirname, 'views', 'titles.html'));
+    // res.sendFile(path.join(__dirname, 'public/js', 'questions.js'))
     
 });
 app.get("/datastructures", checkUser,(req, res) => {
@@ -59,17 +80,7 @@ app.get("/compile",checkUser, (req, res) => {
 app.get("/cn",checkUser,(req,res)=>{
     res.sendFile(path.join(__dirname,'views','cn.html'));
 });
-app.get("/osi",checkUser,function(req,res){
-    // new quiz();
-  let q= new quiz();
 
-  q.fun(res);
-    // res.sendFile(path.join(__dirname,'views','osi.html'));
-    // console.log(r);
-    // console.log(q);
-    // res.render("osi.ejs",{q:q});
-    // res.re
-});
 
 app.post("/compile",checkUser, (req, res) => {
 
