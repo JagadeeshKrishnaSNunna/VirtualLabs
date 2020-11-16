@@ -9,6 +9,8 @@ const app = express();
 // const {c, cpp, node, python, java} = require('compile-run');
 const studentRouter=require('./Routes/StudentAuth')  
 const path = require('path');
+const quiz=require('./public/js/cnquiz');
+const {c, cpp, node, python, java} = require('compile-run');
 const compile = require('./public/js/compile.js');
 const bodyParser = require('body-parser');
 const { stderr } = require("process");
@@ -31,7 +33,7 @@ app.use('/StudentAuthentication',studentRouter)
 app.get("/titles", (req, res) => {
     res.sendFile(path.join(__dirname, 'views', 'titles.html'));
 });
-app.get("/datastructures", (req, res) => {
+app.get("/datastructures", checkUser,(req, res) => {
     res.sendFile(path.join(__dirname, 'views', 'datastructures.html'));
 
 });
@@ -42,23 +44,62 @@ app.get("/stack", checkUser,(req, res) => {
 app.get("/compile",checkUser, (req, res) => {
     res.sendFile(path.join(__dirname, 'views', 'compile.html'));
 });
+
+app.get("/cn",checkUser,(req,res)=>{
+    res.sendFile(path.join(__dirname,'views','cn.html'));
+});
+app.get("/osi",checkUser,function(req,res){
+    // new quiz();
+  let q= new quiz();
+
+  q.fun(res);
+    // res.sendFile(path.join(__dirname,'views','osi.html'));
+    // console.log(r);
+    // console.log(q);
+    // res.render("osi.ejs",{q:q});
+    // res.re
+
 app.get("/cn",(req,res)=>{
     res.sendFile(path.join(__dirname,'views','cn.html'));
 });
 app.get("/osi",(req,res)=>{
     res.sendFile(path.join(__dirname,'views','osi.html'));
+
 });
 
 app.post("/compile",checkUser, (req, res) => {
 
-    const sourcecode = req.body.code;// stores the source code
-    const test = req.body.test;  //stores the input 
-    var language = req.body.langs;
+    // const sourcecode = req.body.code;// stores the source code
+    const test ="";  //stores the input 
+    var language = "python";
+const sourcecode =req.body.code;
+// console.log(test);
     let c = new compile()
     c.com(sourcecode, test, language);
     res.redirect("/compile");
 
 });
+
+app.get("/placement",checkUser, (req, res) => {
+    res.sendFile(path.join(__dirname, 'views', 'placement.html'));
+});
+app.get("/problem1",checkUser,(req, res) => {
+    res.sendFile(path.join(__dirname, 'views', 'problem1.html'));
+});
+app.get("/problem2",checkUser, (req, res) => {
+    res.sendFile(path.join(__dirname, 'views', 'problem2.html'));
+});
+app.get("/problem3",checkUser, (req, res) => {
+    res.sendFile(path.join(__dirname, 'views', 'problem3.html'));
+});
+app.get("/ExceptionalHand",checkUser, (req, res) => {
+    res.sendFile(path.join(__dirname, 'views', 'ExceptionalHand.html'));
+});
+app.get("/cn",checkUser, (req, res) => {
+    res.sendFile(path.join(__dirname, 'views', 'cn.html'));
+});
+app.get("/networkutilities",checkUser,(req, res) => {
+
 app.get("/placement", (req, res) => {
     res.sendFile(path.join(__dirname, 'views', 'placement.html'));
 });
@@ -78,6 +119,7 @@ app.get("/cn", (req, res) => {
     res.sendFile(path.join(__dirname, 'views', 'cn.html'));
 });
 app.get("/networkutilities", (req, res) => {
+
     res.sendFile(path.join(__dirname, 'views', 'networkutilities.html'));
 });
 

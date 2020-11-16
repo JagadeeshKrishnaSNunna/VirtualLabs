@@ -3,47 +3,101 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <link rel="stylesheet" href="/Semantic/semantic.min.css">
+    <script src="js/jquery-3.4.1.min.js"></script>
+    <script src="/Semantic/semantic.min.js"></script>
+  <link rel="stylesheet" href="CSS/editor-style.css">
     <title>Virtual labs</title>
+    <script>
+      function loadCode(){
+        let codeEditor = ace.edit("editorCode");
+        if(sessionStorage.getItem('uCode')!=null){
+          codeEditor.setValue(sessionStorage.getItem('uCode'));
+          sessionStorage.removeItem('uCode');
+        }
+      }
+    </script>
 </head>
-<body>
+<body onload="loadCode()"> 
+  <div class="ui container">
+    <!-- <div class="editor__wrapper"> -->
 
-    <h1>Coding Platform</h1>
 
-    <!-- <div class="container">
-        <form name="myform" action="/code" method="POST" >
-          
-           <h1>code</h1>
-           <div class="row">
-            <div class="col-25">
-              <label for="fname">languages</label>
+      <div class="comp_data">
+        <div id="compilerData">
+          Write a program in C to simulate the working of a stack of integers using an array. Provide the following operations:<br>
+           a. Insert<br> b. Delete<br> c. Display.<br><br>
+           <strong>Input Format:</strong><br>
+           Every line consists of one argument, a character. If the character is 'a', the next argument is an integer.<br>
+           The Character denotes the operation. 'a' is to Insert, 'b' is to Delete, and 'c' is to Display.<br>
+           The Integer denotes the value to Insert into the stack.<br>
+           Note: The program ends only when a character which is not any of the above options is entered.<br><br>
+           <strong>Output Format:</strong><br>
+           Print one/more array of integers, denoting the composition of the stack.<br> 
+          </div><br>
+          <div class="ui segment">
+            <div class="ui two column very relaxed grid">
+                 <div class="column">
+                   <strong>Sample Input</strong><br>
+                   a 5<br>a 8<br>c<br>b<br>a 7<br>c<br>q
+                 </div>
+                 <div class="column">
+                   <strong>Sample Output</strong><br>
+                   8 5 <br>7 5 <br>
+                 </div>
             </div>
-            <select   name ="langs" id="lang">
-                <option value="cpp">C</option>
-                <option value="c++">C++</option>
-                <option value="java">Java </option>
-                <option value="python">Python </option>
-            </select>
+            <div class="ui vertical divider">and</div>
+            </div>
            
-          </div>
-           <br>
-           <textarea name="code" id="" cols="100" rows="20"> #include<stdio.h>
+      </div>
+  <!-- This below code is for editor setup part -->
+  <div class="editor__wrapper">
+      <div class="editor__body" style="height:500px;width: 1050px;">
+        <div action="" id="editorCode" class="editor__code" >
+          
+        </div>
+       
+      </div>
+    
+        <div class="editor__footer">
+            <div class="editor__footer--left">
+              <form  name="myform" action="/compile" method="post">
+                <input type="hidden" id='code' name="code"  >
+                <button class="editor__btn editor__run" >Run ></button>
+              </form>
+               
+                <button class="editor__btn editor__reset">Reset ></button>
+            </div>
+            <div class="editor__footer--right">
+         <div class="editor__console">
 
-            int main(){
-            
-            int main=10;
-            
-            printf("hello world %d",main);
-            return 0;
-            }</textarea>
-        <br>
-        <div class="customTest">
-            <textarea name="test" id="" cols="30" rows="10"></textarea>
+         </div>
+                <div class="editor__console">
+                 
+                    <ul class="editor__console-logs">
+
+                    </ul>
+                    <ul class="editor__console-logs">
+                      
+                    </ul>
+                </div>
+            </div>
         </div>
-        <br>
-        <div class="submit">
-            <button class="btn" >Submit</button>
-        </div>
-        </form> -->
+    </div>
+</div>
+  <!-- require code editors  -->
+<script src="js/ace-editor/src-min/ace.js"></script>
+<!-- <script src="js/ace-editor/src-min/mode-javascript.js"></script>  -->
+<script src="js/ace-editor/src-min/mode-c_cpp.js"></script> 
+<script src="js/ace-editor/src-min/ext-language_tools.js"></script>
+
+<!-- custom scripts -->
+
+  <script src="js/editor.js"></script>
+
+  
+  
 </div>
 </body>
 </html>

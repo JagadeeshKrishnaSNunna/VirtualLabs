@@ -1,5 +1,7 @@
 const {c, cpp, node, python, java} = require('compile-run');
 const { stderr } = require("process");
+
+
  module.exports=class compile{
     com=(sourcecode,test,language)=>{
         if(language==="cpp"){
