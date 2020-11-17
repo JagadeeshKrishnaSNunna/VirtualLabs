@@ -19,7 +19,7 @@ module.exports= class Quiz_solve{
             dbo.collection("Quiz").findOne({}, function(err, result) {
               if (err) throw err;
                 else{
-                    console.log(result);
+                    // console.log(result);
                      
                     res.render("osi.ejs",{result:result});
 
@@ -38,3 +38,6 @@ module.exports= class Quiz_solve{
        
         
       }
+
+
+ 

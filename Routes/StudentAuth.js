@@ -3,8 +3,8 @@ const mongoose = require('mongoose');
 const url = 'mongodb://localhost/Studentdbex'
 mongoose.connect(url, { useNewUrlParser: true });
 const con = mongoose.connection
-con.on('open', function () { console.log("connection established") })
-const students = require('../public/model/StudentDB')
+con.on('open', function () { console.log("mogoDB connection established  with auth") })
+const students = require('../public/model/StudentDB')//DB Schema
 
 
 var bodyParser = require('body-parser')
@@ -15,8 +15,23 @@ const path = require('path')
 
 var urlencodedParser = bodyParser.urlencoded({ extended: true })
 
-router.get("/Authentication", (req, res) => {
-    res.sendFile(path.join(__dirname, '..', 'views', 'StudentAuthentication.html'), { name: 'ola' });
+//Session middleware
+const redirect = (req, res, next) => {
+    if (req.session.usn != undefined) {
+        // module.exports=req.session.usn;
+        res.redirect('/titles')
+    } else { next() }
+}
+const checkUser = (req, res, next) => {
+    if (req.session.usn == undefined) {
+        res.redirect('/StudentAuthentication/Authentication')
+    } else { next() }
+}
+
+
+//Login Page
+router.get("/Authentication", redirect, (req, res) => {
+    res.sendFile(path.join(__dirname, '..', 'views', 'StudentAuthentication.html'));
 });
 router.post("/Authentication", redirect, urlencodedParser, async (req, res) => {
     var id = req.body.usn
