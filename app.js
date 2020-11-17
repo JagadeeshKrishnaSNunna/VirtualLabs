@@ -6,7 +6,7 @@ const app = express();
 //const con = mongoose.connection
 //con.on('open', function () { console.log("connection established") })
 //const students = require('./public/model/StudentDB')
-// const {c, cpp, node, python, java} = require('compile-run');
+
 const studentRouter=require('./Routes/StudentAuth')  
 const quiz_solution=require('./Routes/quiz_solution') 
 const path = require('path');
@@ -113,7 +113,7 @@ app.get("/ExceptionalHand",checkUser, (req, res) => {
 app.get("/cn",checkUser, (req, res) => {
     res.sendFile(path.join(__dirname, 'views', 'cn.html'));
 });
-app.get("/networkutilities",checkUser,(req, res) => {
+
 
 app.get("/placement", (req, res) => {
     res.sendFile(path.join(__dirname, 'views', 'placement.html'));
@@ -146,5 +146,5 @@ app.get("/networkutilities", (req, res) => {
 
 app.listen(3000, err => {
     if (err) console.log("OOPS!!server failed")
-    else console.log("server started at port : 3000");
-}); 
+    else console.log("server started at port : 3000")
+}) 

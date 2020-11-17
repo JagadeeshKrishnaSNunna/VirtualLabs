@@ -1,4 +1,9 @@
 const express = require('express')
+
+const bcrypt=require('bcrypt')//encrypting the password
+
+
+//mongoDB connection
 const mongoose = require('mongoose');
 const url = 'mongodb://localhost/Studentdbex'
 mongoose.connect(url, { useNewUrlParser: true });
@@ -9,8 +14,8 @@ const students = require('../public/model/StudentDB')//DB Schema
 
 var bodyParser = require('body-parser')
 const router = express.Router()
-const path = require('path')
-
+const path = require('path');
+const session = require('express-session');
 
 
 var urlencodedParser = bodyParser.urlencoded({ extended: true })
@@ -36,14 +41,9 @@ router.get("/Authentication", redirect, (req, res) => {
 router.post("/Authentication", redirect, urlencodedParser, async (req, res) => {
     var id = req.body.usn
     // document.getElementById("user").innerHTML=id;
-
-router.post("/Authentication", urlencodedParser, async (req, res) => {
-    var id=req.body.usn
-
     const student = await students.findById(id)
-    if(student==null){
+    if (student == null) {
         res.sendFile(path.join(__dirname, '..', 'views', 'StudentRegisterUsnCheck.html'));
-
     } else {
         try{
             if (bcrypt.compare(req.body.password,student.password)) {
@@ -58,32 +58,24 @@ router.post("/Authentication", urlencodedParser, async (req, res) => {
 
         }catch (e){
 
-
-    }else{
-        if(student.password==req.body.password){
-            res.sendFile(path.join(__dirname, '..', 'views', 'titles.html'));
-
         }
-        else{
-            res.sendFile(path.join(__dirname, '..', 'views', 'StudentAuthentication.html'));
-        }
-        
+
     }
-    
+
 });
 
 
+//check usn 
 
-
-router.get("/StudentRegisterUsn", (req, res) => {
+router.get("/StudentRegisterUsn", redirect, (req, res) => {
     res.sendFile(path.join(__dirname, '..', 'views', 'StudentRegisterUsnCheck.html'));
 });
-router.post("/StudentRegisterUsn", urlencodedParser, async (req, res) => {
-    var id=req.body.usn
+router.post("/StudentRegisterUsn", redirect, urlencodedParser, async (req, res) => {
+    var id = req.body.usn
     const student = await students.findById(id)
-    
-    if (student!= null) {
-        res.sendFile(path.join(__dirname, '..', 'views', 'StudentAuthentication.html'),{msg:`${id} Already registered`});
+
+    if (student != null) {
+        res.sendFile(path.join(__dirname, '..', 'views', 'StudentAuthentication.html'));
     }
     else {
         res.sendFile(path.join(__dirname, '..', 'views', 'StudentRegisterDetails.html'));
@@ -92,22 +84,44 @@ router.post("/StudentRegisterUsn", urlencodedParser, async (req, res) => {
 
 
 
-router.get("/StudentRegisterDetails", (req, res) => {
-    res.sendFile(path.join(__dirname, '..' ,'views', 'StudentRegisterDetails.html'));
+//Register user Details
+
+router.get("/StudentRegisterDetails", redirect, (req, res) => {
+    res.sendFile(path.join(__dirname, '..', 'views', 'StudentRegisterDetails.html'));
 });
 
-router.post("/StudentRegisterDetails", urlencodedParser,async(req, res) => {
-    const student=new students({
-        _id:req.body.usn,
-        name:req.body.Studentname,
-        password:req.body.pass
+router.post("/StudentRegisterDetails", redirect, urlencodedParser, async (req, res) => {
+    try{
+        const hashedpassword=await bcrypt.hash(req.body.pass,10)
+        const student = new students({
+            _id: req.body.usn,
+            name: req.body.Studentname,
+            password: hashedpassword
+        })
+        const s = await student.save();
+        res.sendFile(path.join(__dirname, '..', 'views', 'StudentAuthentication.html'));
+
+    }catch (e){
+        res.redirect('/StudentAuthentication/StudentRegisterDetails')
+    }
+});
+
+
+
+
+//logout
+
+router.get('/Logout', checkUser, urlencodedParser, (req, res) => {
+    req.session.destroy(err => {
+        if (err) {
+            return res.redirect('/titles')
+        }
+        res.clearCookie("StudentUSN");
+        console.log("logged out successful..!");
+        res.redirect('/StudentAuthentication/Authentication')
     })
-    const s=await student.save();
-    console.log(s);
-    res.send()
-    //res.sendFile(path.join(__dirname, '..' ,'views', 'StudentRegisterDetails.html'));
-});
 
+})
 
 
 module.exports = router;
