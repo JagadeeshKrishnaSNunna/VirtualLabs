@@ -1,0 +1,35 @@
+{
+  "name": "virtuallabs",
+  "version": "1.0.0",
+  "description": "",
+  "main": "app.js",
+  "dependencies": {
+    "ace-code-editor": "^1.2.3",
+    "bcrypt": "^5.0.0",
+    "body-parser": "^1.19.0",
+    "compile-run": "^2.3.4",
+    "ejs": "^3.1.5",
+    "express": "^4.17.1",
+    "express-session": "^1.17.1",
+    "mongoose": "^5.10.14",
+    "path": "^0.12.7"
+  },
+  "devDependencies": {
+    "nodemon": "^2.0.6"
+  },
+  "type": "commonjs",
+  "scripts": {
+    "watch": "nodemon",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Ajaykumarsh/VirtualLabs.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Ajaykumarsh/VirtualLabs/issues"
+  },
+  "homepage": "https://github.com/Ajaykumarsh/VirtualLabs#readme"
+}

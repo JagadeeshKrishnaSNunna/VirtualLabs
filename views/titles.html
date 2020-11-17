@@ -6,9 +6,13 @@
         <title>Virtual Lab</title>
         <meta name="description" content="">
         <meta name="viewport" content="width=device-width, initial-scale=1">
-        <script src="js/jquery-3.4.1.min.js"></script>
+        <script src="/js/jquery-3.4.1.min.js"></script>
         <link rel="stylesheet" href="/Semantic/semantic.min.css">
         <script src="/Semantic/semantic.min.js"></script>
+        <script type="module" src="/js/questions.js"></script>
+        
+        
+       
         <link rel="stylesheet" href="/home.css">
         <link rel="icon" href="images\dscelogo.png">
         <title>Virtual-Labs</title>
@@ -23,18 +27,14 @@
 <div id="toTop"><i class="chevron up icon"></i></div>
 <div id="toTop"><i class="chevron up icon"></i></div>
   <div class="ui  light grey inverted secondary huge menu">
-  <a class="header item" href="/home">
+  <a class="header item" href="/">
     Home
   </a>
  <a class="item">
     About Us
   </a> 
-   
-  <a class="item" href="/StudentAuthentication/Logout">Logout</a>
-
-  <!-- <a class="item" href="/Logout">
-    Logout
-  </a> -->
+   <h1 class="username"></h1>
+  <a class="item" href="/StudentAuthentication/Logout">  Logout</a>
 </div>
 </div>
 <div id="toTop"><i class="chevron up icon"></i></div>
@@ -200,5 +200,6 @@
     </div>
   </div>
   </div>
+ 
 </body>
 </html>

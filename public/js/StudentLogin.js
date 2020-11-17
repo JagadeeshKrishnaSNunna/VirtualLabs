@@ -3,6 +3,7 @@
 
 function FormSubmit() {
     var usn = document.getElementById('usn');
+    // document.getElementById("user").innerHTML="1ds17cs008";
     usn.value=usn.value.toUpperCase();
     var err = document.getElementById('Invalid');
     var pass = document.getElementById('password');
