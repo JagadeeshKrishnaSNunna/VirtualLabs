@@ -14,12 +14,15 @@
         let codeEditor = ace.edit("editorCode");
         if(sessionStorage.getItem('uCode')!=null){
           codeEditor.setValue(sessionStorage.getItem('uCode'));
-          sessionStorage.removeItem('uCode');
         }
       }
     </script>
 </head>
+
 <body onload="loadCode()">
+
+<body onload="loadCode()"> 
+
   <div class="ui container">
     <!-- <div class="editor__wrapper"> -->
 

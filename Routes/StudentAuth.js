@@ -8,7 +8,7 @@ const mongoose = require('mongoose');
 const url = 'mongodb://localhost/Studentdbex'
 mongoose.connect(url, { useNewUrlParser: true });
 const con = mongoose.connection
-con.on('open', function () { console.log("mogoDB connection established  with auth") })
+con.on('open', function () { console.log("mogoDB connection established  successfully..!") })
 const students = require('../public/model/StudentDB')//DB Schema
 
 
@@ -124,4 +124,4 @@ router.get('/Logout', checkUser, urlencodedParser, (req, res) => {
 })
 
 
-module.exports = router
+module.exports = router;
