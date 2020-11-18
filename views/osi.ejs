@@ -14,15 +14,7 @@
         <hr style="margin-bottom: 20px">
         <form action="" method="post">
   <%for (var i=1;i<=result.cn.length;i++){%>
- 
-          
-       
-           <!-- <div class="buttons">
-            <button id="btn0"><span id="choice0"><%= result.cn[i-1].op1%></span></button>
-            <button id="btn1"><span id="choice1"><%= result.cn[i-1].op2%></span></button>
-            <button id="btn2"><span id="choice2"><%= result.cn[i-1].op3%></span></button>
-            <button id="btn3"><span id="choice3"><%= result.cn[i-1].op4%></span></button>
-        </div> -->
+  
         <div>
             <p><%= `Q${i} .`%><%= result.cn[i-1][`q${i}`]%></p>
             <input type="radio" id="op1" name="<%= result.cn[i-1][`q${i}`]%>" value="<%= result.cn[i-1].op1%>" >
