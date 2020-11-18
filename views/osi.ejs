@@ -4,13 +4,36 @@
     <meta charset="UTF-8">
     <title>Quiz</title>
     <link rel="stylesheet" type="text/css" href="/Semantic/cnquiz.css">
-    <script src="js/cnquiz.js"></script>
-    
+    <!-- <script src="js/cnquiz.js"></script>
+    <script src="js/cnTimer.js"></script> -->
+    <!-- <script src="js/Quiz_Timer.js"></script> -->
+    <script>
+        var m=1;
+        var s=60;
+var y= setInterval(function(){
+  
+ if(s==0&&m==0){
+     document.getElementById("sbtn").click();
+ }
+
+  if(s==00){
+      m--;
+      s=60;
+  }
+  s--;
+  document.getElementById("timer").innerHTML= m+": "+s;
+  
+},1000)
+
+document.getElementById()
+
+    </script>
 </head>
 <body>
     <div class="grid" style="height: 100%;">
         <div class="quiz">
         <h1>QUIZ on Computer Network</h1>
+        <p id="timer"></p>
         <hr style="margin-bottom: 20px">
         <form action="" method="post">
   <%for (var i=1;i<=result.cn.length;i++){%>
@@ -18,19 +41,19 @@
         <div>
             <p><%= `Q${i} .`%><%= result.cn[i-1][`q${i}`]%></p>
             <input type="radio" id="op1" name="<%= result.cn[i-1][`q${i}`]%>" value="<%= result.cn[i-1].op1%>" >
-            <label for="male"><%= result.cn[i-1].op1%></label><br>
+            <label ><%= result.cn[i-1].op1%></label><br>
             <input type="radio" id="op2" name="<%= result.cn[i-1][`q${i}`]%>" value="<%= result.cn[i-1].op2%>">
-            <label for="female"><%= result.cn[i-1].op2%></label><br>
+            <label ><%= result.cn[i-1].op2%></label><br>
             <input type="radio" id="op3" name="<%= result.cn[i-1][`q${i}`]%>" value="<%= result.cn[i-1].op3%>" >
-            <label for="other"><%= result.cn[i-1].op3%></label> <br>
+            <label ><%= result.cn[i-1].op3%></label> <br>
             <input type="radio" id="op4" name="<%= result.cn[i-1][`q${i}`]%>" value="<%= result.cn[i-1].op4%>">
-            <label for="other"><%= result.cn[i-1].op4%></label>
+            <label ><%= result.cn[i-1].op4%></label>
             <br><br>
 
         </div>
     
         <%}%>
-        <button type="submit">submit</button>
+        <button type="submit" id="sbtn">submit</button>
     </form>
 
 

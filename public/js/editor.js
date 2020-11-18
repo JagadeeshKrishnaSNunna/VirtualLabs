@@ -1,6 +1,6 @@
-const executeCodeBtn = document.querySelector('.editor__run');
+// const executeCodeBtn = document.querySelector('.editor__run');
 
-const resetCodeBtn = document.querySelector('.editor__reset');
+// const resetCodeBtn = document.querySelector('.editor__reset');
 // Setup Ace
 let codeEditor = ace.edit("editorCode");
 let defaultCode = `#include<stdio.h>
@@ -39,31 +39,34 @@ let editorLib = {
 
 
 // Events
-executeCodeBtn.addEventListener('click', () => {
-    // Get input from the code editor
-    const sourcecode = codeEditor.getValue();
-    console.log(sourcecode);
+// executeCodeBtn.addEventListener('click', () => {
+//     // Get input from the code editor
+//     const sourcecode = codeEditor.getValue();
+//     console.log(sourcecode);
     
 
-});
+// });
 
 
 var x = setInterval(function() {
 //    console.log("eksd");
-const sourcecode = codeEditor.getValue();
+var sourcecode = codeEditor.getValue();
 sessionStorage.setItem('uCode',sourcecode);
-// console.log(codeEditor.getValue);
+document.querySelector('form').elements[0].value =sourcecode;
+var test =document.querySelector('form').elements[0].value;
+
+
 },100)
 
-resetCodeBtn.addEventListener('click', () => {
+// resetCodeBtn.addEventListener('click', () => {
     // Clear ace editor
     // codeEditor.setValue(defaultCode);
-    const sourcecode = codeEditor.getValue();
+
     // sessionStorage.setItem('uCode',sourcecode);
-    document.querySelector('form').elements[0].value =sourcecode;
-    var test =document.querySelector('form').elements[0].value;
-    console.log(test);
-})
+    // document.querySelector('form').elements[0].value =codeEditor.getValue();
+    // var test =document.querySelector('form').elements[0].value;
+    // console.log(test);
+// })
 
 
 
