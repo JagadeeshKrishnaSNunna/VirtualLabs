@@ -46,7 +46,9 @@ router.post("/Authentication", redirect, urlencodedParser, async (req, res) => {
         res.sendFile(path.join(__dirname, '..', 'views', 'StudentRegisterUsnCheck.html'));
     } else {
         try{
+            // const hashedpassword_login=await bcrypt.hash(req.body.password,10);
             if (bcrypt.compare(req.body.password,student.password)) {
+               
                 console.log("logIn Successful..!");
                 req.session.usn = id;
                 // res.sendFile(path.join(__dirname, '..', 'views', 'titles.html'));
@@ -92,7 +94,8 @@ router.get("/StudentRegisterDetails", redirect, (req, res) => {
 
 router.post("/StudentRegisterDetails", redirect, urlencodedParser, async (req, res) => {
     try{
-        const hashedpassword=await bcrypt.hash(req.body.pass,10)
+        const hashedpassword=await bcrypt.hash(req.body.pass,10);
+        console.log(hashedpassword);
         const student = new students({
             _id: req.body.usn,
             name: req.body.Studentname,
