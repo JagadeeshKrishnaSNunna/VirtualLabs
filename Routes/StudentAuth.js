@@ -124,4 +124,4 @@ router.get('/Logout', checkUser, urlencodedParser, (req, res) => {
 })
 
 
-module.exports = router
+module.exports = router;
