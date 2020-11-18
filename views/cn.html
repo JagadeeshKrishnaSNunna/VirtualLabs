@@ -8,7 +8,7 @@
   <link rel="stylesheet" href="/Semantic/semantic.min.css">
   <script src="js/semantic.min.js"></script>
   <script src="js/script.js"></script>
-
+  <script src="js/cnTimer.js"></script>
   <link rel="stylesheet" href="/home.css">
   <link rel="icon" href="images\dscelogo.png">
   <title>Computer Networks</title>
@@ -43,7 +43,7 @@
         Objective
       </a>
       <a class="item" id="list">
-        List of Tutorials
+       Quiz
       </a>
       <a class="item" id="faq">
         FAQ's
@@ -59,7 +59,8 @@
       
       <div id="lis" style="display: none;">
         <div class="ui bulleted list">
-          <a   class="item" href="/quiz/osi" id="quizd">OSI layers</a>
+          <h2 id="demo" style="text-align: center;"></h2>
+          <a   class="item"  style="visibility: hidden;"  href="/quiz/osi" id="quizd">OSI layers</a>
         </div>
       </div>
       
@@ -107,16 +108,17 @@
 </script>
 <script>
 
-var d =new Date();
 //  Mon Nov 16 2020 23:06:11 GMT+0530 (India Standard Time)  ==this is the date format
 // console.log(an);
 // changing the CSS
-var count =""+d.getDate()+d.getHours()+d.getMinutes();
-console.log(count);
-if(count<=162340){
-  document.getElementById('quizd').style['pointer-events']="none";
- document.getElementById('quizd').style.cursor= "default";
-}
+
+// var d =new Date();//get the current date in this ( Mon Nov 16 2020 23:06:11 GMT+0530 (India Standard Time)) Format; 
+// var count =""+d.getDate()+d.getHours()+d.getMinutes();
+// console.log(count);
+// if(count<=162340){
+//   document.getElementById('quizd').style['pointer-events']="none";
+//  document.getElementById('quizd').style.cursor= "default";
+// }
  
 
 
