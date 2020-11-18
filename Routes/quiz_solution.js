@@ -29,8 +29,41 @@ const checkUser = (req, res, next) => {
   } else { next() }
 }
 
+const QuizSubmitorNot=(req,res,next)=>{
+  // console.log(req.session.quiz);
+  // next();
+  // var id=req.session.usn;
+  MongoClient.connect(url,async(err,db)=>{
+    if(err) throw err;
+    var dbper =db.db("Studentdbex");
+dbper.collection("performances").findOne({},async(err,result)=>{
+  if(err) throw err;
+  else {
+    // var id =result.id;
+    // console.log(result);
+  if(result==null||result._id==undefined){
+    next();
+  }else{
+    // res.send("<h>already Taken the</h>");
+  //  window.alert("You have already taken the test");
+  res.send(`<html>
+  <head>
+  <script>
+window.alert("You have already taken this test");
+  </script>
+  </head>
+  <body>
+  <a href="/cn" style="text-align: center;">back</a>
+  </body>
+  </html>`)
+  }
+}
+});
+    });
+}
+
 //get the quiz questions from the db and print in osi.ejs
-router.get("/osi", checkUser, (req, res) => {
+router.get("/osi",QuizSubmitorNot, checkUser, (req, res) => {
   // new quiz();
   let q = new quiz();
 
@@ -54,12 +87,10 @@ router.post("/osi", urlencodedParser,  (req, res) => {
       if (err) throw err;
       else {
         var res = result;
-        console.log(res);
+        // console.log(res);
         for (var i = 1; i <= res.cn.length; i++) {
           //comparing the quiz results with the answers at the database;
           if (answers[result.cn[i - 1][`q${i}`]] === res.cn[i - 1][`ans${i}`]) {
-            //console.log(answers[result.cn[i - 1][`q${i}`]]);
-            //console.log(res.cn[i - 1][`ans${i}`])
             count++;
           }
 

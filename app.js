@@ -47,18 +47,18 @@ const checkUser=(req,res,next)=>{
   }else{next()}
 }
 
- const getUsn=(req,res,next)=>{
-    if(req.session.usn==undefined){
-        next()
-    }else{
+//  const getUsn=(req,res,next)=>{
+//     if(req.session.usn==undefined){
+//         next()
+//     }else{
          
-        console.log(req.session.usn);
+//         console.log(req.session.usn);
         
-        // getusn(req.session.usn);
-        next();
-    }
+//         // getusn(req.session.usn);
+//         next();
+//     }
     
-}
+// }
 
 app.get("/titles", checkUser, (req, res) => {
     
