@@ -53,7 +53,7 @@ router.post("/osi", urlencodedParser, async (req,res)=>{
             if (err) throw err;
             else{
                var res=result;
-                 
+                console.log(res); 
               for(var  i=1;i<=res.cn.length;i++){
                   //comparing the quiz results with the answers at the database;
                   if(answers[result.cn[i-1][`q${i}`]]===res.cn[i-1][`ans${i}`]){

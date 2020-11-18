@@ -48,13 +48,18 @@ executeCodeBtn.addEventListener('click', () => {
 });
 
 
-
+var x = setInterval(function() {
+//    console.log("eksd");
+const sourcecode = codeEditor.getValue();
+sessionStorage.setItem('uCode',sourcecode);
+// console.log(codeEditor.getValue);
+},100)
 
 resetCodeBtn.addEventListener('click', () => {
     // Clear ace editor
     // codeEditor.setValue(defaultCode);
     const sourcecode = codeEditor.getValue();
-    sessionStorage.setItem('uCode',sourcecode);
+    // sessionStorage.setItem('uCode',sourcecode);
     document.querySelector('form').elements[0].value =sourcecode;
     var test =document.querySelector('form').elements[0].value;
     console.log(test);
