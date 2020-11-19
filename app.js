@@ -123,8 +123,8 @@ app.get("/logout",(req,res)=>{
 
 
 
-
-app.listen(3000, err => {
+var PORT=process.env.PORT ||3000;
+app.listen(PORT, err => {
     if (err) console.log("OOPS!!server failed")
     else console.log("server started at port : 3000");
 }); 
