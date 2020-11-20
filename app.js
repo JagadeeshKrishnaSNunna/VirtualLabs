@@ -120,11 +120,14 @@ app.get("/logout",(req,res)=>{
 })
 
 
+// const PORT = process.env.PORT || 3000;
 
 
 
-var PORT=process.env.PORT ||3000;
-app.listen(PORT, err => {
-    if (err) console.log("OOPS!!server failed")
-    else console.log("server started at port : 3000");
-}); 
+// app.listen(PORT, err => {
+//     if (err) console.log("OOPS!!server failed")
+//     else console.log("server started at port : 3000");
+// }); 
+app.listen(process.env.PORT || '3000', function(){
+    console.log("Express server listening on port %d in %s mode", this.address().port, app.settings.env);
+  });
